@@ -4,7 +4,7 @@
 
 @section('content')
 	<div class="col-md-12">
-		<div class="well".>
+		<div class="well">
 			{!! Form::open(['route' => 'devices.create']) !!}
 			<div class="checkbox">
 				<label>

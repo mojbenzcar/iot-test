@@ -2004,3 +2004,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
   })
 
 }(jQuery);
+
+
+import Echo from "laravel-echo";
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 'dc6cfe81002e11b3e325',
+    cluster: 'ap1',
+    encrypted: true
+});

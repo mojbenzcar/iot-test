@@ -13,10 +13,7 @@
 $router->get(
     '/',
     [
-        'as' => 'home',
-        function () {
-            return view('home.index');
-        },
+        'as' => 'home','uses'=>'HomeController@index'
     ]
 );
 $router->get('/devices/{id}', ['as' => 'devices.show', 'uses' => 'DeviceController@show']);
