@@ -13,7 +13,8 @@
 $router->get(
     '/',
     [
-        'as' => 'home','uses'=>'HomeController@index'
+        'as'   => 'home',
+        'uses' => 'HomeController@index',
     ]
 );
 $router->get('/devices/{id}', ['as' => 'devices.show', 'uses' => 'DeviceController@show']);
@@ -30,4 +31,8 @@ $router->get(
 $router->post(
     '/devices',
     ['as' => 'devices.create', 'uses' => 'DeviceController@create']
+);
+$router->post(
+    '/devices/notification/{device}',
+    ['as' => 'devices.notification', 'uses' => 'NotificationController@send']
 );

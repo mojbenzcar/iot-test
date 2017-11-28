@@ -13,12 +13,16 @@ use SebastianBergmann\Comparator\Factory;
  */
 class DeviceController extends Controller
 {
-
     private $deviceRepository;
 
     public function __construct(DeviceRepositoryInterface $deviceRepository)
     {
         $this->deviceRepository = $deviceRepository;
+    }
+
+    public function index()
+    {
+        return $this->deviceRepository->all();
     }
 
     /**
@@ -30,7 +34,8 @@ class DeviceController extends Controller
      */
     public function show($id)
     {
-        return view('device.show');
+        $device = $this->deviceRepository->get($id);
+        return view('device.show',compact('device'));
     }
 
     /**

@@ -19,4 +19,13 @@ interface DeviceRepositoryInterface
      * @return mixed
      */
     public function all();
+
+    /**
+     * get device information by name
+     *
+     * @param $name
+     *
+     * @return mixed
+     */
+    public function get($name);
 }

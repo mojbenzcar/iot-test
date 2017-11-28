@@ -2,7 +2,7 @@
 
 use App\Repository\Device\DeviceRepositoryInterface;
 
-class HomeController
+class HomeController extends Controller
 {
     protected $deviceRepository;
 

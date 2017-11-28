@@ -48,6 +48,11 @@ class DeviceRepository implements DeviceRepositoryInterface
      */
     public function all()
     {
-        return Device::all();
+        return Device::orderBy('created_at', 'desc')->get();
+    }
+
+    public function get($name)
+    {
+        return Device::where('name', $name)->first();
     }
 }
