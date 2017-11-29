@@ -21,10 +21,7 @@ $router->get('/devices/{id}', ['as' => 'devices.show', 'uses' => 'DeviceControll
 $router->get(
     '/devices',
     [
-        'as' => 'devices',
-        function () {
-            return view('simulated_device.index');
-        },
+        'as' => 'devices','uses' => 'SimulatedDeviceController@index'
     ]
 );
 

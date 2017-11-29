@@ -19,7 +19,7 @@ class CreateDevicesTable extends Migration
                 $table->increments('id');
                 $table->string('user')->unique();
                 $table->string('name')->unique();
-                $table->enum('status', ['on', 'off', 'running'])->default('off');
+                $table->enum('status', ['off', 'on', 'running'])->default('off');
                 $table->dateTime("start_time")->nullable();
                 $table->timestamps();
             }

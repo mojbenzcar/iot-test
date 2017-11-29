@@ -13,20 +13,6 @@
 				</div>
 			</div>
 			<div class="panel-body">
-				<div class="btn-group">
-					<button type="button" class="btn btn-default btn-xs dropdown-toggle"
-							data-toggle="dropdown">
-						<div class="glyphicon glyphicon-cog"></div>
-						<span
-								class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Start</a></li>
-						<li><a href="#">Stop</a></li>
-						<li><a href="#">Restart</a></li>
-					</ul>
-				</div>
-				<br><br>
 				<div class="device-information">
 					<div class="device">
 						<span class="">User: {{$device->user}}</span>
@@ -38,7 +24,7 @@
 				<br><br>
 				<div class="well">
 					{!! Form::open(['route' => ['devices.notification',$device->name]]) !!}
-					<button type="submit" class="btn btn-lg btn-block btn-primary">Send Notification</button>
+					<button type="submit" class="btn btn-lg btn-block btn-primary">Send Report Command</button>
 					{!! \Form::close() !!}
 
 				</div>

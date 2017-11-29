@@ -4,13 +4,19 @@
 
 @section('content')
 	<div class="col-md-12">
+		<div class="well">
+			{!! Form::open(['route' => 'devices.create']) !!}
+			<div class="checkbox">
+				<label>
+					{!! Form::checkbox('start') !!} <b>Start</b>
+				</label>
+			</div>
+			<button type="submit" class="btn btn-lg btn-primary">Simulate New Device</button>
+			{!! \Form::close() !!}
+		</div>
 		<div class="content-box-large">
 			<div class="panel-heading">
 				<div class="panel-title">List of devices</div>
-
-				<div class="panel-options">
-					<a href="#" data-rel="collapse">running</a>
-				</div>
 			</div>
 			<div class="panel-body">
 				<table class="table">
@@ -26,9 +32,8 @@
 					@foreach($devices as $device)
 						<tr class="success">
 							<td>{{$loop->index+1}}</td>
-							<td>{{$device->name}}</td>
+							<td><a href="{{route('devices.show',$device->name)}}">{{$device->name}}</a></td>
 							<td>{{$device->status}}</td>
-							<td><a href="{{route('devices.show',$device->name)}}">view</a></td>
 						</tr>
 					@endforeach
 					</tbody>

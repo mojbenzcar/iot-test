@@ -17,7 +17,7 @@
 
 	<![endif]-->
 </head>
-<body>
+<body id="app">
 <div class="header">
 	@include('layouts._partials.header')
 
@@ -42,11 +42,6 @@
 
 	</div>
 </footer>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{asset("bootstrap/js/bootstrap.min.js")}}"></script>
-@yield('footer_scripts')
+@yield('script')
 </body>
 </html>

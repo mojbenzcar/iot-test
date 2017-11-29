@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -15,8 +14,39 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-
+// Vue.component('chat-messages', require('./components/ChatMessages.vue'));
+// Vue.component('chat-form', require('./components/ChatForm.vue'));
+const APP_URL = "";
 const app = new Vue({
-    el: '#app'
+    el: '#simulated_device',
+    data: {
+        messages: [],
+        deviceStatus: "on",
+    },
+    created() {
+        console.log("new")
+        var self = this;
+        Echo.channel('device-channel')
+            .listen('.device-notify', function(e) {
+                self.acknowledgeNotification(e)
+            });
+    },
+    methods:{
+        acknowledgeNotification: function(device) {
+            console.log("received notification")
+        },
+        sendDeviceReport(){
+            console.log("send report")
+        },
+        startDevice(){
+            this.deviceStatus = "on";
+            console.log("device has started");
+        },
+        stopDevice(){
+            this.deviceStatus ="stop";
+            console.log("Device has stopped")
+        }
+    }
+
+
 });

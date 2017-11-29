@@ -9,10 +9,11 @@ class HomeController extends Controller
     public function __construct(DeviceRepositoryInterface $deviceRepository)
     {
         $this->deviceRepository = $deviceRepository;
+
     }
 
     /**
-     * write brief description
+     * DashBoard
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
