@@ -26,8 +26,11 @@ class SimulatedDeviceController extends Controller
      */
     public function index()
     {
-        $device = $this->deviceRepository->all()->first();
+        $devices = $this->deviceRepository->all();
+        if (request()->has('device')) {
+            $device = $this->deviceRepository->all()->first();
+        }
 
-        return view('simulated_device.index', compact('device'));
+        return view('simulated_device.index', compact('devices', 'device'));
     }
 }

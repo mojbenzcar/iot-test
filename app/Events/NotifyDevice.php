@@ -48,6 +48,6 @@ class NotifyDevice implements ShouldBroadcast
      */
     public function broadcastWith()
     {
-        return ['device' => $this->device];
+        return ['device' => $this->device->name];
     }
 }

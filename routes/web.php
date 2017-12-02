@@ -18,10 +18,12 @@ $router->get(
     ]
 );
 $router->get('/devices/{id}', ['as' => 'devices.show', 'uses' => 'DeviceController@show']);
+$router->delete('/devices/{id}', ['as' => 'devices.destroy', 'uses' => 'DeviceController@destroy']);
 $router->get(
     '/devices',
     [
-        'as' => 'devices','uses' => 'SimulatedDeviceController@index'
+        'as'   => 'devices',
+        'uses' => 'SimulatedDeviceController@index',
     ]
 );
 

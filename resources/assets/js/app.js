@@ -16,34 +16,67 @@ window.Vue = require('vue');
 
 // Vue.component('chat-messages', require('./components/ChatMessages.vue'));
 // Vue.component('chat-form', require('./components/ChatForm.vue'));
-const APP_URL = "";
+const SERVER_URL = "api";
 const app = new Vue({
     el: '#simulated_device',
+    props: ['device'],
     data: {
         messages: [],
-        deviceStatus: "on",
+        deviceStatus: "on"
     },
     created() {
-        console.log("new")
         var self = this;
         Echo.channel('device-channel')
-            .listen('.device-notify', function(e) {
+            .listen('.device-notify', function (e) {
                 self.acknowledgeNotification(e)
             });
     },
-    methods:{
-        acknowledgeNotification: function(device) {
-            console.log("received notification")
+    methods: {
+        acknowledgeNotification: function (device) {
+            var url = SERVER_URL + "/device/" + device.device + "/report_acknowledgement";
+            axios.post(url)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
-        sendDeviceReport(){
-            console.log("send report")
-        },
-        startDevice(){
-            this.deviceStatus = "on";
+        sendDeviceReport() {
+            console.log("send report");
+            var url = SERVER_URL + "/device/" + device + "/report";
+            axios.post(url, {metadata: {status: this.deviceStatus, other_metadata: "test"}})
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             console.log("device has started");
         },
-        stopDevice(){
-            this.deviceStatus ="stop";
+        startDevice() {
+            console.log("d--" + device);
+            this.deviceStatus = "on";
+            var url = SERVER_URL + "/device/" + device + "/start";
+            axios.post(url)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            console.log("device has started");
+        },
+        stopDevice() {
+            this.deviceStatus = "stop";
+            var url = SERVER_URL + "/device/" + device + "/stop";
+            axios.post(url)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             console.log("Device has stopped")
         }
     }

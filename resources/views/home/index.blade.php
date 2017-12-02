@@ -30,10 +30,17 @@
 					</thead>
 					<tbody>
 					@foreach($devices as $device)
-						<tr class="success">
+						<tr>
 							<td>{{$loop->index+1}}</td>
 							<td><a href="{{route('devices.show',$device->name)}}">{{$device->name}}</a></td>
 							<td>{{$device->status}}</td>
+							<td>
+								{!! Form::open(['route'=>['devices.destroy',$device->name],'method'=>'DELETE',
+								'class'=>'form-horizontal',
+		   'role'=>'form','onsubmit' => 'return confirm("are you sure ?")'])!!}
+								<button type="submit">Delete</button>
+								{!! Form::close() !!}
+							</td>
 						</tr>
 					@endforeach
 					</tbody>

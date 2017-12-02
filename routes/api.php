@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::post('device/{device}/report', 'ReportController@receive');
+Route::post('device/{device}/start', 'DeviceController@start');
+Route::post('device/{device}/stop', 'DeviceController@stop');
+Route::post('device/{device}/report_acknowledgement', 'DeviceController@acknowledge');

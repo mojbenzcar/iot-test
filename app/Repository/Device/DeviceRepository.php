@@ -34,7 +34,9 @@ class DeviceRepository implements DeviceRepositoryInterface
                 $device->start_time = Carbon::now()->toDateTimeString();
             }
 
-            return $device->save();
+            $device->save();
+
+            return $device;
         } catch (\Exception $e) {
             \Log::error('Error adding device.');
         }
